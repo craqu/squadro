@@ -4,7 +4,7 @@ fn main() {
 
 }
 struct Board {
-    in_progress : bool,
+    game_in_progress : bool,
     upward_position : Vec<i32>,
     sideward_position : Vec<i32> 
 }
@@ -13,28 +13,41 @@ struct Pion {
     is_upward : bool,
     position : u8
 }
+impl Pion {
+    fn bouge(&mut self, position: u8) {
+        self.position = position;
+    }
+    fn position(self) -> u8 {
+        self.position
+    }
+}
 
 fn print_board(upward_position : [Pion ; 5], sideward_position : [Pion ; 5]) {
     let board = vec![
-            "       . | . : | : : | : : | : . | .     \n",
-            "         |   . | .   |   . | .   |       \n",
-            "  ...    |     |     |     |     |      .\n",
-            "1 ───────┼─────┼─────┼─────┼─────┼───────\n",
-            "  ...    |     |     |     |     |      .\n",
-            "  .      |     |     |     |     |    ...\n",
-            "2 ───────┼─────┼─────┼─────┼─────┼───────\n",
-            "  .      |     |     |     |     |    ...\n",
-            "  ..     |     |     |     |     |     ..\n",
-            "3 ───────┼─────┼─────┼─────┼─────┼───────\n",
-            "  ..     |     |     |     |     |     ..\n",
-            "  .      |     |     |     |     |    ...\n",
-            "4 ───────┼─────┼─────┼─────┼─────┼───────\n",
-            "  .      |     |     |     |     |    ...\n",
-            "  ...    |     |     |     |     |      .\n",
-            "5 ───────┼─────┼─────┼─────┼─────┼───────\n",
-            "  ...    |     |     |     |     |      .\n",
-            "       . | .   |     |     |   . | .     \n",
-            "       : | : . | . : | : . | . : | .     \n"];
+            "       . | . : | : : | : : | : . | .     ",
+            "         |   . | .   |   . | .   |       ",
+            "  ...    |     |     |     |     |      .",
+            "1 ───────┼─────┼─────┼─────┼─────┼───────",
+            "  ...    |     |     |     |     |      .",
+            "  .      |     |     |     |     |    ...",
+            "2 ───────┼─────┼─────┼─────┼─────┼───────",
+            "  .      |     |     |     |     |    ...",
+            "  ..     |     |     |     |     |     ..",
+            "3 ───────┼─────┼─────┼─────┼─────┼───────",
+            "  ..     |     |     |     |     |     ..",
+            "  .      |     |     |     |     |    ...",
+            "4 ───────┼─────┼─────┼─────┼─────┼───────",
+            "  .      |     |     |     |     |    ...",
+            "  ...    |     |     |     |     |      .",
+            "5 ───────┼─────┼─────┼─────┼─────┼───────",
+            "  ...    |     |     |     |     |      .",
+            "       . | .   |     |     |   . | .     ",
+            "       : | : . | . : | : . | . : | .     "];
+    // place les pions des joueurs sur le board
+
+    for line in board{
+        println!{"{}",line};
+    }
     enum Position{
         One,
         Two,
@@ -42,5 +55,13 @@ fn print_board(upward_position : [Pion ; 5], sideward_position : [Pion ; 5]) {
         Four,
         Five
     }
-
 }
+fn place_joueur(){}
+
+fn place_un_charactere(){}
+
+fn place_un_pion_h(){}
+
+fn place_un_pion_v(){}
+
+fn formatter_les_parties(){}

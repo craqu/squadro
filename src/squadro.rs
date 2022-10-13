@@ -9,7 +9,12 @@ struct Board {
 struct Pion {
     index : u8,
     is_upward : bool,
-    position : u8
+    position : u8,
+    skipligne : array,
+    skipcol : array
+}
+struct Board {
+    board : vec
 }
 impl Pion {
     fn bouge(&mut self, position: u8) {
@@ -56,9 +61,14 @@ fn print_board(upward_position : [Pion ; 5], sideward_position : [Pion ; 5]) {
 }
 fn place_joueur(){}
 
-fn place_un_charactere(){}
+fn place_un_charactere(&mut tableau: vec, icone : String, hor: u8, vert: u8){
+    tableau[(vert*41) + hor] = icone;
+}
 
-fn place_un_pion_h(){}
+fn place_un_pion_h(){
+    let chaine1= String::from("□□ ○");
+    let chaine2=String::from("○ □□");
+}
 
 fn place_un_pion_v(){}
 

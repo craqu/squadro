@@ -1,5 +1,7 @@
 
 
+mod squadro;
+
 fn main() {
 
 }

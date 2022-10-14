@@ -1,4 +1,6 @@
+// Change since last commit :
 
+// Changed is_upward to is_coming_back
 use std::{vec, array};
 
 struct Board {
@@ -8,7 +10,7 @@ struct Board {
 }
 struct Pion {
     index : u8,
-    is_upward : bool,
+    is_coming_back : bool,
     position : u8,
     skipligne : array,
     skipcol : array

@@ -1,11 +1,6 @@
 
 use std::{vec, array};
 
-struct Board {
-    game_in_progress : bool,
-    upward_position : Vec<i32>,
-    sideward_position : Vec<i32> 
-}
 struct Pion {
     index : u8,
     is_upward : bool,
@@ -14,19 +9,12 @@ struct Pion {
     skipcol : array
 }
 struct Board {
-    board : vec
+    board : vec,
+    game_in_progress : bool,
 }
-impl Pion {
-    fn bouge(&mut self, position: u8) {
-        self.position = position;
-    }
-    fn position(self) -> u8 {
-        self.position
-    }
-}
-
-fn print_board(upward_position : [Pion ; 5], sideward_position : [Pion ; 5]) {
-    let board = vec![
+impl Board {
+    fn init(&mut self) {
+        self.board = vec![
             "       . | . : | : : | : : | : . | .     ",
             "         |   . | .   |   . | .   |       ",
             "  ...    |     |     |     |     |      .",
@@ -46,30 +34,69 @@ fn print_board(upward_position : [Pion ; 5], sideward_position : [Pion ; 5]) {
             "  ...    |     |     |     |     |      .",
             "       . | .   |     |     |   . | .     ",
             "       : | : . | . : | : . | . : | .     "];
-    // place les pions des joueurs sur le board
+            self.game_in_progress = true;
 
-    for line in board{
-        println!{"{}",line};
     }
-    enum Position{
-        One,
-        Two,
-        Tree,
-        Four,
-        Five
+    fn place_pion(&mut self, pion: Pion) {
+        if pion.is_upward {
+
+        }
+        else {
+            let forward : &str = "□□ ○";
+            let backward: &str = "○ □□";
+            let interval = 6;
+            let positions_forward = [4, 7, 13, 19, 25, 31, 34];
+            let positions_backward = [33, 30, 24, 18, 12, 6, 4];
+            let position: usize= pion.position.clone().into();
+            if position <= 5 {
+                // l'index de pion commence a 1 et termine a 5
+                self.board[pion.index * 3][positions_forward[position]..positions_forward[position] + forward.len()+1] = forward;
+            }
+            else {
+                self.board[pion.index * 3][positions_backward[position]..positions_backward[position] + backward.len()+1] = backward;
+            }
+
+
+        }
+    }
+    fn print_board(self) {
+        for line in self.board{
+            println!("{}",line);
+        }
     }
 }
-fn place_joueur(){}
 
-fn place_un_charactere(&mut tableau: vec, icone : String, hor: u8, vert: u8){
-    tableau[(vert*41) + hor] = icone;
+
+impl Pion {
+    fn bouge(&mut self, position: u8) {
+        self.position = position;
+    }
+    fn position(self) -> u8 {
+        self.position
+    }
 }
 
-fn place_un_pion_h(){
-    let chaine1= String::from("□□ ○");
-    let chaine2=String::from("○ □□");
-}
 
-fn place_un_pion_v(){}
-
-fn formatter_les_parties(){}
+let mut b = Board {
+    board : vec![
+"       . | . : | : : | : : | : . | .     ",
+"         |   . | .   |   . | .   |       ",
+"  ...    |     |     |     |     |      .",
+"1 ───────┼─────┼─────┼─────┼─────┼───────",
+"  ...    |     |     |     |     |      .",
+"  .      |     |     |     |     |    ...",
+"2 ───────┼─────┼─────┼─────┼─────┼───────",
+"  .      |     |     |     |     |    ...",
+"  ..     |     |     |     |     |     ..",
+"3 ───────┼─────┼─────┼─────┼─────┼───────",
+"  ..     |     |     |     |     |     ..",
+"  .      |     |     |     |     |    ...",
+"4 ───────┼─────┼─────┼─────┼─────┼───────",
+"  .      |     |     |     |     |    ...",
+"  ...    |     |     |     |     |      .",
+"5 ───────┼─────┼─────┼─────┼─────┼───────",
+"  ...    |     |     |     |     |      .",
+"       . | .   |     |     |   . | .     ",
+"       : | : . | . : | : . | . : | .     "],
+is_upward: true
+};

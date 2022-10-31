@@ -41,12 +41,13 @@ impl Board {
     }
     fn place_pion(&mut self, pion: Pion) {
         if pion.is_upward {
-
-        }
+            let downward: &str = ("□","□"," ","○");
+            let upward: &str = ("○"," ","□","□");
+        )
         else {
             let forward : &str = "□□ ○";
             let backward: &str = "○ □□";
-            let interval = 6;
+            //let interval = 6;
             let positions_forward = [4, 7, 13, 19, 25, 31, 34];
             let positions_backward = [33, 30, 24, 18, 12, 6, 4];
             let position: usize= pion.position.clone().into();
@@ -55,6 +56,7 @@ impl Board {
                 self.board[pion.index * 3][positions_forward[position]..positions_forward[position] + forward.len()+1] = forward;
             }
             else {
+                if position > 12 {panic!("Position over 12 is not allowed")}
                 self.board[pion.index * 3][positions_backward[position]..positions_backward[position] + backward.len()+1] = backward;
             }
 
@@ -79,26 +81,3 @@ impl Pion {
 }
 
 
-let mut b = Board {
-    board : vec![
-"       . | . : | : : | : : | : . | .     ",
-"         |   . | .   |   . | .   |       ",
-"  ...    |     |     |     |     |      .",
-"1 ───────┼─────┼─────┼─────┼─────┼───────",
-"  ...    |     |     |     |     |      .",
-"  .      |     |     |     |     |    ...",
-"2 ───────┼─────┼─────┼─────┼─────┼───────",
-"  .      |     |     |     |     |    ...",
-"  ..     |     |     |     |     |     ..",
-"3 ───────┼─────┼─────┼─────┼─────┼───────",
-"  ..     |     |     |     |     |     ..",
-"  .      |     |     |     |     |    ...",
-"4 ───────┼─────┼─────┼─────┼─────┼───────",
-"  .      |     |     |     |     |    ...",
-"  ...    |     |     |     |     |      .",
-"5 ───────┼─────┼─────┼─────┼─────┼───────",
-"  ...    |     |     |     |     |      .",
-"       . | .   |     |     |   . | .     ",
-"       : | : . | . : | : . | . : | .     "],
-is_upward: true
-};
